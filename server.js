@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/person", personRoutes);
 app.use("/menu", menuRoutes);
 
-app.get("/", (req, res) => {S
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
