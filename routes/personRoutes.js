@@ -17,8 +17,17 @@ router.post("/", async (req, res) => {
 
 // get all perosn  data
 router.get("/", async (req, res) => {
-  const data = await Person.find();
-  res.status(200).json(data);
+    try {
+      const data = await Person.find();
+      if (data.length === 0) {
+        return res.status(404).json({ message: "No persons found" });
+      }
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get persons" });
+      console.log(error);
+    }
+
 });
 
 //get data work type
